@@ -10,6 +10,12 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * Entidad que representa el metadato de revisión de Envers.
+ *
+ * <p>Envers usa esta entidad para registrar un número de revisión y timestamp por cambio
+ * (insert/update/delete) en entidades auditadas.</p>
+ */
 @Entity
 @Table(name = "Revision_Info")
 @RevisionEntity(CustomRevisionListener.class)
@@ -22,6 +28,9 @@ public class Revision implements Serializable {
     @RevisionNumber
     private int id;
 
+    /**
+     * Timestamp de la revisión (cuando se creó la revisión).
+     */
     @Column(name = "Revision_Date")
     @Temporal(TemporalType.TIMESTAMP)
     @RevisionTimestamp
